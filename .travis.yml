@@ -8,4 +8,4 @@ notifications:
     - buck.robert.j@gmail.com
 
 script:
-  - mvn clean install
+  - mvn clean install -DskipTests=true
