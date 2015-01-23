@@ -1,0 +1,16 @@
+.DS_Store
+target/
+.idea/
+*.iml
+*.swp
+id_rsa
+id_rsa.pub
+authorized_keys
+addsudoers
+*.deb
+*.rpm
+.classpath
+.project
+.settings
+.metadata
+sources/.m2/repository/*

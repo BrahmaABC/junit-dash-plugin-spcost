@@ -1,0 +1,29 @@
+DEFAULTS: &defaults
+  workload.rates.limit: 50000
+  workload.burst.limit: 80000
+  workload.duration: !env $(workload.duration:30)
+  workload.threads: !env $(workload.threads:32)
+  workload.class: com.github.rbuck.dash.nuodb.spcost.Plugin
+  db.name: spcost
+  db.schema: spcost
+  db.user: dba
+  db.password: dba
+  db.type: nuodb
+  db.pool.type: hikaricp
+  db.transaction.autocommit: true
+  db.transaction.readonly: false
+  metrics.service.reporters: [csv,console,elasticsearch]
+  metrics.service.elasticsearch.hosts: ['localhost:9200']
+
+SINGLE: &single
+  <<: *defaults
+  workload.mix: 100
+  workload.tag: !env $(workload.tag:this)
+
+SPC: {<<: *single, workload.tag: SPC}
+LIS: {<<: *single, workload.tag: LIS}
+
+MIX:
+  <<: *defaults
+  workload.tag: [SPC,LIS]
+  workload.mix: [50,50]
