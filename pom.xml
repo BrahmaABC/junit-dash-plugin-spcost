@@ -76,16 +76,17 @@
                 <configuration>
                     <argLine>-Xmx1024m</argLine>
                     <systemPropertyVariables>
-                        <db.type>hsqldb</db.type>
+                        <db.type>nuodb</db.type>
                         <db.pool.type>hikaricp</db.pool.type>
                         <db.name>spcost</db.name>
                         <db.schema>spcost</db.schema>
                         <db.user>dba</db.user>
                         <db.password>dba</db.password>
+                        <metrics.service.reporters>csv,console</metrics.service.reporters>
                         <log4j.configuration>file://${project.build.outputDirectory}/logging.properties</log4j.configuration>
                         <log.dir>/tmp/junit-dash/log</log.dir>
                         <workload.mix>50,50</workload.mix>
-                        <workload.tag>this,that</workload.tag>
+                        <workload.tag>SPC,LIS</workload.tag>
                         <workload.duration>30</workload.duration>
                         <workload.threads>32</workload.threads>
                         <workload.rates.limit>90000000</workload.rates.limit>
